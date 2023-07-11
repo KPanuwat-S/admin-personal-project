@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-import Button from "./Button";
 import Modal from "./Modal";
-import ItemForm from "./ItemForm";
-
-function StockHeader() {
+import ProductModelForm from "./ProductModelForm";
+function ProductModelHeader() {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="p-10 flex">
       <div className="flex-1"></div>
-      <Button
-        text="+ ADD ITEM"
+      <div
         onClick={() => {
           setOpen(true);
         }}
-      ></Button>
+      >
+        + Add Item
+      </div>
       <div>
         <Modal
           open={open}
-          title="ADD ITEM"
+          title="ADD PRODUCT MODEL"
           width={30}
           onClose={() => {
             setOpen(false);
           }}
         >
-          <ItemForm></ItemForm>
+          <ProductModelForm />
         </Modal>
       </div>
     </div>
   );
 }
 
-export default StockHeader;
+export default ProductModelHeader;

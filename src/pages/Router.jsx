@@ -3,6 +3,8 @@ import Sidebar from "../components/Sidebar";
 import StockPage from "./StockPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardPage from "./DashboardPage";
+import ProductModel from "./ProductModel";
+
 function HomePage() {
   return (
     <BrowserRouter>
@@ -14,6 +16,7 @@ function HomePage() {
           <Routes>
             <Route path="/dashboard" element={<DashboardPage />}></Route>
             <Route path="/stock" element={<StockPage />}></Route>
+            <Route path="/productModel" element={<ProductModel />}></Route>
           </Routes>
         </div>
       </div>

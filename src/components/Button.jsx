@@ -1,7 +1,7 @@
 import createClasses from "../utils/createClasses";
 
 function Button({ text, primary, width = null, onClick, className = "" }) {
-  let defaultProperty = "rounded-xl px-10 py-2 " + className;
+  let defaultProperty = "rounded-xl px-5 py-2 " + className;
   if (width) defaultProperty += `${width}`;
   const primaryProperty =
     "text-white bg-gray-800 hover:bg-gray-700 ease-in-out duration-300";
@@ -12,7 +12,6 @@ function Button({ text, primary, width = null, onClick, className = "" }) {
     primary ? primaryProperty : secondaryProperty
   );
   const clickHandler = (e) => {
-    // e.preventDefault();
     onClick();
   };
 

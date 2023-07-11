@@ -18,13 +18,18 @@ function StockItem() {
               <div className="w-4 h-4 bg-black"></div>
             </div>
             <p className="font-light">Size</p>
-            <p className="font-light">Edit</p>
+            <button className="mt-3 flex text-gray-500 items-center gap-2 hover:text-gray-800">
+              <i class="fa-regular fa-pen-to-square "></i>
+              <p className="font-light">Edit</p>
+            </button>
           </div>
         </div>
         <div className="flex-1">500</div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-5 items-center">
           <p>500</p>
-          <i class="fa-regular fa-trash-can text-gray-500"></i>
+          <button>
+            <i class="fa-regular fa-trash-can text-gray-500 hover:text-gray-800"></i>
+          </button>
         </div>
       </div>
       {/* <hr className="" /> */}

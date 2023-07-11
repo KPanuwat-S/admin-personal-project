@@ -1,13 +1,7 @@
-import HomePage from "./pages/HomePage";
+import Router from "./pages/Router";
 
 function App() {
-  return (
-    <div>
-      {/* <div className="w-[200px]"> */}
-      <HomePage />
-      {/* </div> */}
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

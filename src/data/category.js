@@ -1,0 +1,16 @@
+export const category = [
+  { id: 1, category: "t-shirt", gender: 1 },
+  { id: 2, category: "shirt", gender: 1 },
+  { id: 3, category: "trousers", gender: 1 },
+  { id: 4, category: "jeans", gender: 1 },
+  { id: 5, category: "shorts", gender: 1 },
+  { id: 6, category: "blazer", gender: 1 },
+  { id: 7, category: "jacket", gender: 1 },
+  { id: 8, category: "t-shirt", gender: 2 },
+  { id: 9, category: "shirt", gender: 2 },
+  { id: 10, category: "trousers", gender: 2 },
+  { id: 11, category: "jeans", gender: 2 },
+  { id: 12, category: "shorts", gender: 2 },
+  { id: 13, category: "blazer", gender: 2 },
+  { id: 14, category: "dress", gender: 2 },
+];
