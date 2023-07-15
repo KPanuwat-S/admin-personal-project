@@ -2,37 +2,34 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProductModelAsync,
+  editProductModelAsync,
+  getOneProductModelAsync,
   getProductCategoryAsync,
 } from "../feature/product/Slice/productSlice";
 import cn from "../utils/cn";
 
-function ProductModelForm({ setOpen }) {
+function ProductModelEdit({ setOpen, id }) {
   const dispatch = useDispatch();
-  const [itemData, setItemData] = useState({
-    name: "",
-    description: "",
-    discount: "",
-    price: "",
-    genderId: "",
-    categoryId: "",
-    sizes: [],
-  });
 
   useEffect(() => {
     dispatch(getProductCategoryAsync());
+    dispatch(getOneProductModelAsync(id));
   }, []);
+  const productModel = useSelector((state) => state.product.productModel);
+
+  const [itemData, setItemData] = useState({
+    name: productModel?.name,
+    description: productModel?.description,
+    discount: productModel?.discount,
+    price: productModel?.price,
+    genderId: productModel?.genderId,
+    categoryId: productModel?.Category.id,
+  });
 
   const categories = useSelector((state) => state.product.categories);
-
   const genders = [
     { id: 1, description: "male" },
     { id: 2, description: "female" },
-  ];
-  const sizes = [
-    { id: 1, description: "S" },
-    { id: 2, description: "M" },
-    { id: 3, description: "L" },
-    { id: 4, description: "XL" },
   ];
   const [selectedGender, setSeletectdGender] = useState(0);
   const dataHandler = (e) => {
@@ -45,12 +42,14 @@ function ProductModelForm({ setOpen }) {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("item data on submit", itemData);
-    dispatch(createProductModelAsync(itemData));
+    const input = {
+      id: id,
+      data: itemData,
+    };
+    dispatch(editProductModelAsync(input));
     setOpen(false);
     window.location.reload();
   };
-
-  // UI
 
   return (
     <div>
@@ -96,7 +95,7 @@ function ProductModelForm({ setOpen }) {
             />
           </div>
           <div>
-            <label htmlFor="discount">Discount (%)</label>
+            <label htmlFor="discount">Discount</label>
             <input
               className="bg-gray-100 px-4 py-2 rounded-xl"
               id="discount"
@@ -127,7 +126,7 @@ function ProductModelForm({ setOpen }) {
                       });
                     }}
                     className={cn(
-                      selectedGender == el.id
+                      itemData.genderId == el.id
                         ? "bg-gray-800 text-white hover:bg-gray-800"
                         : "",
                       "px-2 py-1 border rounded-xl hover:bg-gray-100"
@@ -162,29 +161,6 @@ function ProductModelForm({ setOpen }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-5">
-          <div className="">
-            <label htmlFor="img">Size Available</label>
-            {sizes.map((el) => {
-              return (
-                <div className="ml-5 flex justify-between w-[60px]">
-                  <input
-                    type="checkbox"
-                    name="sizes"
-                    id={el.description}
-                    value={el.id}
-                    onClick={() => {
-                      setItemData((prev) => {
-                        return { ...prev, sizes: [...itemData.sizes, el.id] };
-                      });
-                    }}
-                  />
-                  <label htmlFor={el.description}>{el.description}</label>
-                </div>
-              );
-            })}
-          </div>
-        </div>
         <div className="flex gap-5 mt-10 mb-10">
           <div
             role="button"
@@ -209,4 +185,6 @@ function ProductModelForm({ setOpen }) {
   );
 }
 
-export default ProductModelForm;
+export default ProductModelEdit;
+
+// UI

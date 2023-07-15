@@ -24,7 +24,7 @@ export default function Modal({ title, children, width = 27, open, onClose }) {
                     &#10005;
                   </div>
                 </div>
-                <div className="p-4 overflow-auto">{children}</div>
+                <div className="p-5 overflow-auto">{children}</div>
               </div>
             </div>
           </div>

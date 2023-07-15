@@ -4,6 +4,7 @@ import StockPage from "./StockPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardPage from "./DashboardPage";
 import ProductModel from "./ProductModel";
+import ProductModelDetail from "./ProductModelDetail";
 
 function HomePage() {
   return (
@@ -17,6 +18,10 @@ function HomePage() {
             <Route path="/dashboard" element={<DashboardPage />}></Route>
             <Route path="/stock" element={<StockPage />}></Route>
             <Route path="/productModel" element={<ProductModel />}></Route>
+            <Route
+              path="/productModelDetail/:id"
+              element={<ProductModelDetail />}
+            ></Route>
           </Routes>
         </div>
       </div>
